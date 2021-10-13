@@ -1,0 +1,71 @@
+from tkinter import *
+gui = Tk()
+gui.configure(background="white")
+gui.title("Calculator")
+result = ""
+def press(num):
+    global result
+    result = result + str(num)
+    equation.set(result)
+def equal():
+    try:
+        global result
+        total = str(eval(result))
+        equation.set(total)
+        result = total
+    except:
+        equation.set("error")
+        result = ""
+def clear():
+    global result
+    result = ""
+    equation.set("")
+equation = StringVar()
+textbox = Entry(gui, width=20, font=("Arial",20), text=equation)
+textbox.grid(columnspan=4,ipadx=70)
+button1 = Button(gui,text="1", command=lambda: press(1), height=2,width=15)
+button1.grid(row=1,column=0)
+button2 = Button(gui,text="4", command=lambda: press(4), height=2,width=15)
+button2.grid(row=2,column=0)
+button3 = Button(gui,text="7", command=lambda: press(7), height=2,width=15)
+button3.grid(row=3,column=0)
+button4 = Button(gui,text=".", command=lambda: press("."), height=2,width=15)
+button4.grid(row=4,column=0)
+button5 = Button(gui,text="2", command=lambda: press(2), height=2,width=15)
+button5.grid(row=1,column=1)
+button6 = Button(gui,text="5", command=lambda: press(5), height=2,width=15)
+button6.grid(row=2,column=1)
+button7 = Button(gui,text="8", command=lambda: press(8), height=2,width=15)
+button7.grid(row=3,column=1)
+button8 = Button(gui,text="3", command=lambda: press(3), height=2,width=15)
+button8.grid(row=1,column=2)
+button9 = Button(gui,text="6", command=lambda: press(6), height=2,width=15)
+button9.grid(row=2,column=2)
+button10 = Button(gui,text="9", command=lambda: press(9), height=2,width=15)
+button10.grid(row=3,column=2)
+button11 = Button(gui,text="+", command=lambda: press("+"), height=2,width=15)
+button11.grid(row=1,column=3)
+button12 = Button(gui,text="-", command=lambda: press("-"), height=2,width=15)
+button12.grid(row=2,column=3)
+button13 = Button(gui,text="*", command=lambda: press("*"), height=2,width=15)
+button13.grid(row=3,column=3)
+button14 = Button(gui,text="/", command=lambda: press("/"), height=2,width=15)
+button14.grid(row=4,column=3)
+button15 = Button(gui,text="0", command=lambda: press("0"), height=2,width=15)
+button15.grid(row=4,column=1)
+#button16 = Button(gui,text="", height=2,width=15)
+#button16.grid(row=4,column=2)
+button17 = Button(gui,text="clear", command=clear, height=2,width=15)
+button17.grid(row=6,column=3)
+button18 = Button(gui,text="remainder", command=lambda: press("%"), height=2,width=15)
+button18.grid(row=6,column=2)
+button19 = Button(gui,text="power", command=lambda: press("**"), height=2,width=15)
+button19.grid(row=5,column=1)
+button20 = Button(gui,text="=", command=equal, height=2,width=15)
+button20.grid(row=5,column=3)
+button21 = Button(gui,text="(", command=lambda: press("("), height=2,width=15)
+button21.grid(row=6,column=0)
+button22 = Button(gui,text=")", command=lambda: press(")"), height=2,width=15)
+button22.grid(row=6,column=1)
+gui.geometry("460x285")
+gui.mainloop()
